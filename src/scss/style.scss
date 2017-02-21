@@ -1,0 +1,26 @@
+body {
+    margin: 0 auto;
+}
+
+.board {
+    width: 550px;
+    height: 450px;
+    border: 2px solid black;
+    position: relative;
+    margin: 50px;
+    overflow: hidden;
+    background: #ddd;
+}
+
+.tile {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    cursor: pointer;
+    margin: 10px;
+    float: left;
+    background: orange url(img/Github.png) center center no-repeat;
+    &:hover {
+        background: darkviolet;
+    }
+}
