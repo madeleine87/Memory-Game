@@ -6,17 +6,15 @@ $(function () {
     var pickedElements = [];
     var numberOfMoves = 0;
     var canPick = true;
-    var imgOfElments = [
+    var imgOfElments = [];
 
-    ];
-    
-    
+
 
     function startGame() {
 
         var board = $('.board').empty();
 
-        elements = 0;
+        elements = [];
         pickedElements = [];
         numberOfMoves = 0;
         canPick = true;
@@ -46,7 +44,7 @@ $(function () {
         */
 
         for (i = numberOfElements - 1; i < 0; i--) {
-            var swap = Math.floor(Math.random()*i);
+            var swap = Math.floor(Math.random() * i);
             /*
             Math.random() losuje liczbę z przedziału od 0 do 1
             Math.random() * i daje liczbę z przedziały od 0*i do 1*i, czyli od 0 do i
@@ -54,29 +52,33 @@ $(function () {
             var tmp = elements[i];
             elements[i] = elements[swap];
             elements[swap] = tmp;
-            /*
-            jak chcemy dwa elementy zamienić miejscami: elements[i] oraz elements[swap]
-            to musimy miec jakiś tymczasowy koszyk gdzie przechowamy ta wartość bo bez tego elements[i] = elements[swap]
-            spowduje, że na zawsze stracimy wartość która była w elements[i]
-            dlatego tworzymy sobie koszyk tmp:
-            var tmp = elements[i];
-            a potem przenosimy wartości:
-            elements[i] = elemenst[swap];
-            ponieważ elemens[i] jest już zastapione przez wartość z elemens[swap]
-            to  musimy naszą wartość wyjąć z koszyka 
-            elemens[swap] = tmp;
-            */
         }
+        /*
+        jak chcemy dwa elementy zamienić miejscami: elements[i] oraz elements[swap]
+        to musimy miec jakiś tymczasowy koszyk gdzie przechowamy ta wartość bo bez tego elements[i] = elements[swap]
+        spowduje, że na zawsze stracimy wartość która była w elements[i]
+        dlatego tworzymy sobie koszyk tmp:
+        var tmp = elements[i];
+        a potem przenosimy wartości:
+        elements[i] = elemenst[swap];
+        ponieważ elemens[i] jest już zastapione przez wartość z elemens[swap]
+        to  musimy naszą wartość wyjąć z koszyka 
+        elemens[swap] = tmp;
+        */
+        /* Wstawiamy kafelki na planszę */
 
-
-
-
-
-
-
-
-
+        for (i = 0; i < numberOfElements; i++) {
+            var tile = $('<div class="tile"></div>');
+            board.append(tile);
+        } 
     }
+    $(document).ready(function() {
+        var button = $('.start');
+        button.click(function(){
+            startGame();
+        });
+    })
+    
 
 
 
