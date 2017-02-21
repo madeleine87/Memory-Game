@@ -98,8 +98,6 @@ $(function () {
                 tileClick($(this))
             });
         }
-
-        $('.moves').html("Liczba ruchów: " + numberOfMoves)
     }
 
     function tileClick(element) {
@@ -122,7 +120,6 @@ $(function () {
                     }, 500);
                 }
                 numberOfMoves++;
-                $('.moves').html("Liczba ruchów: " + numberOfMoves)
             }
         }
     }
@@ -136,7 +133,7 @@ $(function () {
 
             pairs++;
             if (pairs >= numberOfElements / 2) {
-                alert('gameOver!');
+                swal("Good job!", "Liczba ruchów: " + numberOfMoves, "success");
             }
 
             canPick = true;
