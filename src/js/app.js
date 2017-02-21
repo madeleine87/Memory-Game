@@ -6,7 +6,19 @@ $(function () {
     var pickedElements = [];
     var numberOfMoves = 0;
     var canPick = true;
-    var imgOfElments = [];
+    var pairs = 0;
+    var imgOfElments = [
+        'img/css.png',
+        'img/Github.png',
+        'img/html.png',
+        'img/jquery.png',
+        'img/js.png',
+        'img/php.png',
+        'img/ruby.png',
+        'img/rwd.png',
+        'img/sass.png',
+        'img/w.png'
+    ];
 
 
 
@@ -18,6 +30,7 @@ $(function () {
         pickedElements = [];
         numberOfMoves = 0;
         canPick = true;
+        pairs = 0;
 
         for (i = 0; i < numberOfElements; i++) {
             elements.push(Math.floor(i / 2));
@@ -43,7 +56,7 @@ $(function () {
         stworzy nam tablicę elements = [0,0,1,1,2,2,3,3,...,8,9,9] 
         */
 
-        for (i = numberOfElements - 1; i < 0; i--) {
+        for (i = numberOfElements - 1; i > 0; i--) {
             var swap = Math.floor(Math.random() * i);
             /*
             Math.random() losuje liczbę z przedziału od 0 do 1
@@ -70,18 +83,82 @@ $(function () {
         for (i = 0; i < numberOfElements; i++) {
             var tile = $('<div class="tile"></div>');
             board.append(tile);
-        } 
+
+            tile.data('type', elements[i]);
+            tile.data('index', i);
+
+            tile.css({
+                left: 5 + (tile.width() + 5) * (i % elementsInRow)
+            });
+            tile.css({
+                top: 5 + (tile.height() + 5) * (Math.floor(i / elementsInRow))
+            });
+
+            tile.on('click', function () {
+                tileClick($(this))
+            });
+        }
+
+        $('.moves').html("Liczba ruchów: " + numberOfMoves)
     }
-    $(document).ready(function() {
+
+    function tileClick(element) {
+        if (canPick) {
+            if (!pickedElements[0] || (pickedElements[0].data('index') != element.data('index'))) {
+                pickedElements.push(element);
+                element.css({
+                    'background-image': 'url(' + imgOfElments[element.data('type')] + ')'
+                })
+            }
+            if (pickedElements.length == 2) {
+                canPick = false;
+                if (pickedElements[0].data('type') == pickedElements[1].data('type')) {
+                    window.setTimeout(function () {
+                        removeTiles();
+                    }, 500);
+                } else {
+                    window.setTimeout(function () {
+                        resetTiles();
+                    }, 500);
+                }
+                numberOfMoves++;
+                $('.moves').html("Liczba ruchów: " + numberOfMoves)
+            }
+        }
+    }
+
+    function removeTiles() {
+        pickedElements[0].fadeOut(function () {
+            $(this).remove();
+        });
+        pickedElements[1].fadeOut(function () {
+            $(this).remove();
+
+            pairs++;
+            if (pairs >= numberOfElements / 2) {
+                alert('gameOver!');
+            }
+
+            canPick = true;
+            pickedElements = new Array();
+        });
+    }
+
+    function resetTiles() {
+        pickedElements[0].css({
+            'background-image': ''
+        })
+        pickedElements[1].css({
+            'background-image': ''
+        })
+        pickedElements = new Array();
+        canPick = true;
+    }
+
+    $(document).ready(function () {
         var button = $('.start');
-        button.click(function(){
+        button.click(function () {
             startGame();
         });
     })
-    
-
-
-
-
-
 });

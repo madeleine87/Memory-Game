@@ -3,12 +3,23 @@ body {
     padding: 10px;
 }
 
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
 .board {
     width: 550px;
     height: 450px;
     border: 2px solid black;
+    border-radius: 5%;
     position: relative;
-    margin: 50px;
+//    left: 25%;
+//    margin: 50px;
     overflow: hidden;
     background: #ddd;
 }
@@ -24,4 +35,9 @@ body {
     &:hover {
         background: darkviolet;
     }
+}
+
+button {
+    width: 100px;
+    padding: 5px;
 }
