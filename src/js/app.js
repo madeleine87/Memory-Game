@@ -8,16 +8,16 @@ $(function () {
     var canPick = true;
     var pairs = 0;
     var imgOfElments = [
-        'img/css.png',
-        'img/Github.png',
-        'img/html.png',
-        'img/jquery.png',
-        'img/js.png',
-        'img/php.png',
-        'img/ruby.png',
-        'img/rwd.png',
-        'img/sass.png',
-        'img/w.png'
+        'img/astronaut.png',
+        'img/diplodocus.png',
+        'img/dracula.png',
+        'img/elephant.png',
+        'img/octopus.png',
+        'img/sphinx.png',
+        'img/spider.png',
+        'img/whale.png',
+        'img/wheat.png',
+        'img/dolphin.png'
     ];
 
 
