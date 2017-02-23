@@ -52,7 +52,7 @@ $(function () {
         weź 5, wynik z Math.floor(5/2) = 2
         dodaj dwa do elements itd.... 
         
-        wynik: pętle, która dla i = 0,1,2,3,4,5,6,...,17,18,19,20
+        wynik: pętla, która dla i = 0,1,2,3,4,5,6,...,17,18,19
         stworzy nam tablicę elements = [0,0,1,1,2,2,3,3,...,8,9,9] 
         */
 
@@ -76,7 +76,7 @@ $(function () {
         elements[i] = elemenst[swap];
         ponieważ elemens[i] jest już zastapione przez wartość z elemens[swap]
         to  musimy naszą wartość wyjąć z koszyka 
-        elemens[swap] = tmp;
+        elements[swap] = tmp;
         */
         /* Wstawiamy kafelki na planszę */
 
@@ -137,7 +137,7 @@ $(function () {
             }
 
             canPick = true;
-            pickedElements = new Array();
+            pickedElements = [];
         });
     }
 
@@ -148,7 +148,7 @@ $(function () {
         pickedElements[1].css({
             'background-image': ''
         })
-        pickedElements = new Array();
+        pickedElements = [];
         canPick = true;
     }
 
